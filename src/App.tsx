@@ -16,7 +16,11 @@ function App() {
 
           </TextField>
 
-            <IconButton>
+            <IconButton sx={{
+              position: "absolute",
+              right: 0,
+              bottom: 0
+            }}>
               <AddRoundedIcon color='primary'></AddRoundedIcon>
             </IconButton>
         </form>      
