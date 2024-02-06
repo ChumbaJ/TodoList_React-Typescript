@@ -11,9 +11,17 @@ function NewTaskInput() {
     
             
             <form action="submit" id='task-form'>
-              <TextField label={"Имя новой задачи"} autoFocus={true} fullWidth={true} variant='standard'>
-    
-              </TextField>
+              <TextField 
+                label={"Имя новой задачи"} 
+                autoFocus={true} 
+                fullWidth={true} 
+                variant='standard'
+                sx={{
+                  '& .MuiInputLabel-root': {
+                    pl: 0.2
+                  }
+                }}
+              />
     
                 <IconButton sx={{
                   position: "absolute",

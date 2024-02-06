@@ -7,8 +7,14 @@ import NewTaskInput from './components/TaskInput/TaskInput'
 function App() {
   
   return (
-    <Container maxWidth='sm'>
-      <Typography color={"primary.light"} variant='h1'>TODO</Typography>
+    <Container maxWidth = 'sm'>
+      <Typography 
+        fontSize = {34}
+        fontWeight={400} 
+        color = {"primary.light"} 
+        variant = 'h1'
+        paddingBottom={3}
+      >TODO</Typography>
       <NewTaskInput></NewTaskInput>
     </Container>
   )
