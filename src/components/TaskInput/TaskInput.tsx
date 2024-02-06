@@ -6,22 +6,24 @@ function NewTaskInput() {
 
     return (
         <Box sx={{
-            bgcolor: 'white'
+            bgcolor: 'white',
+            mb: 6
           }}>
     
             
             <form action="submit" id='task-form'>
               <TextField 
-                label={"Имя новой задачи"} 
-                autoFocus={true} 
-                fullWidth={true} 
-                variant='standard'
-                sx={{
+                label = {"Имя новой задачи"} 
+                autoFocus = {true} 
+                fullWidth = {true} 
+                variant = 'standard'
+                sx = {{
                   '& .MuiInputLabel-root': {
-                    pl: 0.2
+                    pl: 0.2,
+                    color: "#00000099"
                   }
                 }}
-              />
+              ></TextField>
     
                 <IconButton sx={{
                   position: "absolute",
