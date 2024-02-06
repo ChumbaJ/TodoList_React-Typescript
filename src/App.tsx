@@ -1,8 +1,8 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
+import { Container, Stack, Typography } from '@mui/material'
 
 import './App.css'
 import NewTaskInput from './components/TaskInput/TaskInput'
-
+import TaskPlan from './components/TaskPlan/TaskPlan'
 
 function App() {
   
@@ -17,7 +17,7 @@ function App() {
       >TODO</Typography>
       <NewTaskInput></NewTaskInput>
 
-      <Stack spacing = {12}>
+      <Stack spacing = {2}>
         <Typography
           component = {'p'}
           variant = 'caption'
@@ -26,7 +26,7 @@ function App() {
           color = {'#00000099'}
         >{'ПЛАН (0)'}</Typography>
 
-        
+        <TaskPlan/>
       </Stack>
     </Container>
   )
