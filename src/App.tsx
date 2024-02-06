@@ -1,30 +1,15 @@
-import { Box, Container, IconButton, TextField, Typography } from '@mui/material'
-import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import { Container, Typography } from '@mui/material'
+
 import './App.css'
+import NewTaskInput from './components/TaskInput/TaskInput'
+
 
 function App() {
   
   return (
-    <Container>
-      <Box sx={{
-        bgcolor: 'white'
-      }}>
-
-        <Typography color={"primary.light"} variant='h1'>TODO</Typography>
-        <form action="submit" id='task-form'>
-          <TextField label={"Имя новой задачи"} autoFocus={true} fullWidth={true} variant='standard'>
-
-          </TextField>
-
-            <IconButton sx={{
-              position: "absolute",
-              right: 0,
-              bottom: 0
-            }}>
-              <AddRoundedIcon color='primary'></AddRoundedIcon>
-            </IconButton>
-        </form>      
-      </Box>
+    <Container maxWidth='sm'>
+      <Typography color={"primary.light"} variant='h1'>TODO</Typography>
+      <NewTaskInput></NewTaskInput>
     </Container>
   )
 }
