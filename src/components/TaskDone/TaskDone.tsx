@@ -1,7 +1,7 @@
 import { Box, Checkbox, IconButton, Stack, FormControlLabel, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function TaskDone({ taskList, onCheckboxChanged }) {
+function TaskDone({ taskList, onCheckboxChanged, onDeleteTask }) {
     const doneTasks = taskList.filter(task => task.isDone);
 
     return (
@@ -19,7 +19,7 @@ function TaskDone({ taskList, onCheckboxChanged }) {
                     <Box display='flex' alignItems='center'>
                         <FormControlLabel control={<Checkbox onChange={() => onCheckboxChanged(task)} defaultChecked={true}/>} label={task.taskName}/>
                     </Box>
-                    <IconButton sx={{pr:0.4}}>
+                    <IconButton onClick={() => onDeleteTask(task)} sx={{pr:0.4}}>
                         <DeleteIcon color="warning"/>
                     </IconButton>
                 </Stack>

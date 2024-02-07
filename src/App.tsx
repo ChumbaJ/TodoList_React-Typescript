@@ -68,7 +68,7 @@ function App() {
       onSubmitEdit = {submitEditTask}
       onCheckboxChanged = {onCheckboxChanged}
       />
-      <TaskDone taskList = {taskList} onCheckboxChanged = {onCheckboxChanged}/>
+      <TaskDone onDeleteTask = {onDeleteTask} taskList = {taskList} onCheckboxChanged = {onCheckboxChanged}/>
     </Container>
   )
 }
