@@ -1,0 +1,8 @@
+.doneTask__button {
+    opacity: 0;
+    transition: 0.1s ease-out;
+}
+
+.doneTask:hover .doneTask__button {
+    opacity: 1;
+}

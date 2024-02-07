@@ -1,5 +1,7 @@
 import { Box, Checkbox, IconButton, Stack, FormControlLabel, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
+import './TaskDone.css'
+
 
 function TaskDone({ taskList, onCheckboxChanged, onDeleteTask }) {
     const doneTasks = taskList.filter(task => task.isDone)
@@ -16,11 +18,11 @@ function TaskDone({ taskList, onCheckboxChanged, onDeleteTask }) {
     
     
                 {doneTasks.map(task => 
-                    <Stack key={crypto.randomUUID()} direction='row' justifyContent='space-between'>
+                    <Stack className="doneTask" key={crypto.randomUUID()} direction='row' justifyContent='space-between'>
                         <Box display='flex' alignItems='center'>
                             <FormControlLabel control={<Checkbox onChange={() => onCheckboxChanged(task)} defaultChecked={true}/>} label={task.taskName}/>
                         </Box>
-                        <IconButton onClick={() => onDeleteTask(task)} sx={{pr:0.4}}>
+                        <IconButton className="doneTask__button" onClick={() => onDeleteTask(task)} sx={{pr:0.4}}>
                             <DeleteIcon color="warning"/>
                         </IconButton>
                     </Stack>

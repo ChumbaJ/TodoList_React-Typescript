@@ -1,0 +1,8 @@
+.task__buttons {
+    opacity: 0;
+    transition: 0.1s ease-out;
+}
+
+.task:hover .task__buttons {
+    opacity: 1;
+}
