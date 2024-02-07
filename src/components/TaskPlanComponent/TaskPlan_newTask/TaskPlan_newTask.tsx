@@ -8,7 +8,7 @@ function TaskPlan_newTask() {
     return (
         <Stack direction='row' justifyContent={'space-between'} alignItems='center'>
             <Box display='flex' alignItems='center'>
-                <Checkbox/>
+                <Checkbox sx={{pl:0}}/>
                 {
                     isEdit ? <TextField variant="standard" label='Имя задачи'/> : <Typography>Task</Typography>
                 }
@@ -17,7 +17,7 @@ function TaskPlan_newTask() {
                 <IconButton sx={{p:0, mr:0.5, ml:2}}>
                     <EditIcon color='info'/>
                 </IconButton>
-                <IconButton sx={{p:0}}>
+                <IconButton>
                     <DeleteIcon color='warning'/>
                 </IconButton>
             </Box>

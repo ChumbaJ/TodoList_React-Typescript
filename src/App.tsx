@@ -2,6 +2,7 @@ import './App.css'
 import { Container, Typography } from '@mui/material'
 import NewTaskInput from './components/TaskInput/TaskInput'
 import TaskPlan from './components/TaskPlanComponent/TaskPlan'
+import TaskDone from './components/TaskDone/TaskDone'
 
 function App() {
   
@@ -17,6 +18,8 @@ function App() {
       <NewTaskInput></NewTaskInput>
 
       <TaskPlan/>
+
+      <TaskDone/>
     </Container>
   )
 }
