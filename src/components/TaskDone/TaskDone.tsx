@@ -1,19 +1,30 @@
 import { Box, Checkbox, IconButton, Stack, FormControlLabel, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function TaskDone() {
+function TaskDone({ taskList }) {
+    const doneTasks = taskList.filter(task => task.isDone);
+
     return (
         <Stack spacing={2}>
-            <Typography align="center" variant="caption" gutterBottom={false} color='text.secondary'>{'ГОТОВО (0)'}</Typography>
+            <Typography 
+            align="center" 
+            variant="caption" 
+            gutterBottom={false} 
+            color='text.secondary'
+            >{`ГОТОВО (${doneTasks.length})`}</Typography>
 
-            <Stack direction='row' justifyContent='space-between'>
-                <Box display='flex' alignItems='center'>
-                    <FormControlLabel control={<Checkbox/>} label='Task'/>
-                </Box>
-                <IconButton>
-                    <DeleteIcon color="warning"/>
-                </IconButton>
-            </Stack>
+
+            {doneTasks.map(task => 
+                <Stack direction='row' justifyContent='space-between'>
+                    <Box display='flex' alignItems='center'>
+                        <FormControlLabel control={<Checkbox defaultChecked={true}/>} label={task.taskName}/>
+                    </Box>
+                    <IconButton>
+                        <DeleteIcon color="warning"/>
+                    </IconButton>
+                </Stack>
+            )}
+            
         </Stack>
     )
 }

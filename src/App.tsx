@@ -70,7 +70,7 @@ function App() {
       onSubmitEdit = {submitEditTask}
       onDoneTask = {onDoneTask}
       />
-      <TaskDone/>
+      <TaskDone taskList = {taskList}/>
     </Container>
   )
 }
