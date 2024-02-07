@@ -46,6 +46,13 @@ function App() {
     setTaskList(taskList.filter(taskObj => taskObj.toDelete != true));
   }
 
+  const onDoneTask = (task) => {
+    task.isDone = true;
+    
+    setTaskList([...taskList])
+
+  }
+
   return (
     <Container disableGutters={true} sx={{mt: 4, mb:4 , minHeight: 600, p:8, borderRadius: 4, boxShadow: 2}} maxWidth = 'sm'>
       <Typography 
@@ -57,7 +64,12 @@ function App() {
       >TODO</Typography>
 
       <NewTaskInput addNewTask = {addNewTask}></NewTaskInput>
-      <TaskPlan taskList = {taskList} onDeleteTask = {onDeleteTask} onSubmitEdit = {submitEditTask}/>
+      <TaskPlan 
+      taskList = {taskList} 
+      onDeleteTask = {onDeleteTask} 
+      onSubmitEdit = {submitEditTask}
+      onDoneTask = {onDoneTask}
+      />
       <TaskDone/>
     </Container>
   )

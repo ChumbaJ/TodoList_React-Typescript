@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import { useState } from "react";
 
-function TaskPlan_newTask({ task, onSubmitEdit, onDeleteTask }) {
+function TaskPlan_newTask({ task, onSubmitEdit, onDeleteTask, onDoneTask }) {
     const [newTaskName, setNewTaskName] = useState(task.taskName);
 
     if (task.isEdit) {
@@ -47,7 +47,7 @@ function TaskPlan_newTask({ task, onSubmitEdit, onDeleteTask }) {
         return (
             <Stack direction='row' justifyContent={'space-between'} alignItems='center'>
                 <Box display='flex' alignItems='center'>
-                    <FormControlLabel control={<Checkbox/>} label={task.taskName}/>
+                    <FormControlLabel control={<Checkbox onChange={() => onDoneTask(task)}/>} label={task.taskName}/>
                 </Box>
                 <Box alignItems='center'>
                     <IconButton 
