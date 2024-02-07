@@ -23,7 +23,10 @@ function NewTaskInput({ addNewTask }) {
       }}>
 
         
-        <form onSubmit={(e) => addNewTask(e, taskName)} action="submit" id='task-form'>
+        <form onSubmit={(e) => {
+          addNewTask(e, taskName)
+          setTask("");
+          }} action="submit" id='task-form'>
           <TextField
             value={taskName}
             onChange={(e) => onInput(e)}
@@ -37,7 +40,7 @@ function NewTaskInput({ addNewTask }) {
                 
               },
               '& .MuiInputLabel-root.Mui-focused': {
-                color: "#00000099"
+                color: "text.secondary"
               }
             }}
           ></TextField>
