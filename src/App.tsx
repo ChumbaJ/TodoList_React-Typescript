@@ -7,18 +7,17 @@ import TaskDone from './components/TaskDone/TaskDone'
 function App() {
   
   return (
-    <Container sx={{mt: 4}} maxWidth = 'sm'>
+    <Container disableGutters={true} sx={{mt: 4, minHeight: 600, p:8, borderRadius: 4, boxShadow: 2}} maxWidth = 'sm'>
       <Typography 
         fontSize = {34}
         fontWeight = {400} 
         color = {"primary.light"} 
         variant = 'body1'
-        paddingBottom = {3}
+        marginBottom = {3}
       >TODO</Typography>
       <NewTaskInput></NewTaskInput>
 
       <TaskPlan/>
-
       <TaskDone/>
     </Container>
   )

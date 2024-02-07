@@ -22,7 +22,7 @@ function NewTaskInput() {
                     pl: 0.2,
                     
                   },
-                  '& .Mui-focused': {
+                  '& .MuiInputLabel-root.Mui-focused': {
                     color: "#00000099"
                   }
                 }}
