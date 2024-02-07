@@ -3,9 +3,7 @@ import { Container, Typography } from '@mui/material'
 import NewTaskInput from './components/TaskInput/TaskInput'
 import TaskPlan from './components/TaskPlanComponent/TaskPlan'
 import TaskDone from './components/TaskDone/TaskDone'
-import { FormEvent, useState } from 'react'
-
-
+import { FormEvent, useEffect, useState } from 'react'
 
 interface Itask {
   taskName: string
@@ -17,9 +15,30 @@ interface Itask {
 type TaskListType = Array<Itask> | [];
 
 
+
 function App() {
 
-  const [taskList, setTaskList] = useState<TaskListType>([]);
+  useEffect(() => {
+    const input = document.getElementById("newTaskInput") as HTMLInputElement;
+    document.addEventListener('keydown', (e) => {
+      if (e.key != 'Escape') {
+        input.focus();
+      } else {
+        input.blur();
+      }
+  })
+    return () => {
+      document.removeEventListener('keydown', (e) => {
+        if (e.key != 'Escape') {
+          input.focus();
+        } else {
+          input.blur();
+        }
+      });  
+    }
+},[])
+
+  const [taskList, setTaskList] = useState<TaskListType>([]); 
 
   const addNewTask = (e: FormEvent, task: string) => { 
     e.preventDefault();
@@ -33,9 +52,6 @@ function App() {
         toDelete: false
       }
     ])
-
-
-
   }
 
   const submitEditTask = (e: FormEvent, taskToEdit: Itask) => {

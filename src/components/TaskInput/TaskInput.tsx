@@ -2,18 +2,21 @@
 import './TaskInput.css'
 import { Box, TextField, IconButton } from "@mui/material"
 import AddRoundedIcon from '@mui/icons-material/AddRounded';
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 
+type addNewTaskType = (e: FormEvent, task: string) => void;
 
+interface INewTaskInputProps {
+  addNewTask: addNewTaskType;
+}
 
-function NewTaskInput({ addNewTask }) {
+function NewTaskInput({ addNewTask }: INewTaskInputProps) {
   const [taskName, setTask] = useState("");
 
-  const onInput = (e) => {
+  const onInput = (e:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const taskText = e.target.value;
     setTask(taskText);
   }
-
 
 
   return (
@@ -28,6 +31,7 @@ function NewTaskInput({ addNewTask }) {
           setTask("");
           }} action="submit" id='task-form'>
           <TextField
+            id='newTaskInput'
             value={taskName}
             onChange={(e) => onInput(e)}
             label = {"Имя новой задачи"} 
