@@ -2,15 +2,15 @@ import { Box, Checkbox, IconButton, Stack, TextField, Typography } from "@mui/ma
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-let isEdit = false;
+const isEdit = false;
 
-function TaskPlan() {
+function TaskPlan_newTask() {
     return (
         <Stack direction='row' justifyContent={'space-between'} alignItems='center'>
             <Box display='flex' alignItems='center'>
                 <Checkbox/>
                 {
-                    isEdit ? <TextField></TextField> : <Typography>Task</Typography>
+                    isEdit ? <TextField variant="standard" label='Имя задачи'/> : <Typography>Task</Typography>
                 }
             </Box>
             <Box alignItems='center'>
@@ -25,4 +25,4 @@ function TaskPlan() {
     )
 }
 
-export default TaskPlan
+export default TaskPlan_newTask
