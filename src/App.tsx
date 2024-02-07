@@ -46,11 +46,9 @@ function App() {
     setTaskList(taskList.filter(taskObj => taskObj.toDelete != true));
   }
 
-  const onDoneTask = (task) => {
-    task.isDone = true;
-    
+  const onCheckboxChanged = (task) => {
+    task.isDone = !task.isDone;  
     setTaskList([...taskList])
-
   }
 
   return (
@@ -68,9 +66,9 @@ function App() {
       taskList = {taskList} 
       onDeleteTask = {onDeleteTask} 
       onSubmitEdit = {submitEditTask}
-      onDoneTask = {onDoneTask}
+      onCheckboxChanged = {onCheckboxChanged}
       />
-      <TaskDone taskList = {taskList}/>
+      <TaskDone taskList = {taskList} onCheckboxChanged = {onCheckboxChanged}/>
     </Container>
   )
 }

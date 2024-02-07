@@ -1,10 +1,9 @@
 import { Stack, Typography } from "@mui/material"
 import TaskPlan_newTask from "./TaskPlan_newTask/TaskPlan_newTask"
-import { TaskSharp } from "@mui/icons-material";
 
 
 
-function TaskPlan({ taskList, onSubmitEdit, onDeleteTask, onDoneTask}) {
+function TaskPlan({ taskList, onSubmitEdit, onDeleteTask, onCheckboxChanged}) {
     const plannedTasks = taskList.filter(task => task.isDone === false).length;
     
     return (
@@ -27,7 +26,7 @@ function TaskPlan({ taskList, onSubmitEdit, onDeleteTask, onDoneTask}) {
                         task = {task} 
                         onSubmitEdit = {onSubmitEdit}
                         onDeleteTask = {onDeleteTask}
-                        onDoneTask = {onDoneTask}
+                        onCheckboxChanged = {onCheckboxChanged}
                         />)
                 }
             }
