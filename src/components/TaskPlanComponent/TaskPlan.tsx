@@ -6,7 +6,7 @@ import TaskPlan_newTask from "./TaskPlan_newTask/TaskPlan_newTask"
 function TaskPlan({ taskList, onSubmitEdit }) {
 
     return (
-        <Stack mb={4} spacing = {0.5}>
+        <Stack mb={4} spacing = {1}>
             <Typography
             component = {'p'}
             variant = 'caption'
@@ -22,7 +22,6 @@ function TaskPlan({ taskList, onSubmitEdit }) {
                 onSubmitEdit = {onSubmitEdit}
                 />
             )}
-
         </Stack>
     )
 }

@@ -31,10 +31,8 @@ function App() {
 
   }
 
-  const submitEditTask = (e, taskToEdit) => {
+  const submitEditTask = (e, taskToEdit: Itask) => {
     e.preventDefault();
-
-
     taskToEdit.isEdit = !taskToEdit.isEdit; 
     setTaskList([...taskList])
   }
@@ -51,7 +49,6 @@ function App() {
       >TODO</Typography>
 
       <NewTaskInput addNewTask = {addNewTask}></NewTaskInput>
-
       <TaskPlan taskList = {taskList} onSubmitEdit = {submitEditTask}/>
       <TaskDone/>
     </Container>

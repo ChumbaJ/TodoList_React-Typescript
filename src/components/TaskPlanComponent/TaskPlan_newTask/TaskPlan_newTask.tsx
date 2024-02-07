@@ -24,7 +24,8 @@ function TaskPlan_newTask({ task, onSubmitEdit }) {
                         sx={{
                             '& .MuiInputLabel-root.Mui-focused': {
                                 color: "text.secondary"
-                            }
+                            },
+                            mb: 1.2
                         }}
                     />
 
@@ -34,14 +35,13 @@ function TaskPlan_newTask({ task, onSubmitEdit }) {
                         sx={{
                             position: 'absolute',
                             right: 0,
-                            bottom: 0
+                            bottom: 9
                         }}
                     >
                         <DoneIcon color={newTaskName ? "info" : "disabled"}/>
                     </IconButton>
                 </form>
             </Box>
-
         )
     } else {
         return (
@@ -50,12 +50,16 @@ function TaskPlan_newTask({ task, onSubmitEdit }) {
                     <FormControlLabel control={<Checkbox/>} label={task.taskName}/>
                 </Box>
                 <Box alignItems='center'>
-                    <IconButton onClick={(e) => onSubmitEdit(e, task)}
-                        sx={{p:0, mr:0.5, ml:2}}>
-
+                    <IconButton 
+                        onClick={(e) => onSubmitEdit(e, task)}
+                        sx={{p:0.4, mr:0.5, ml:2}}
+                        >
                         <EditIcon color='info'/>
                     </IconButton>
-                    <IconButton>
+
+                    <IconButton
+                        sx={{p:0.4}}
+                    >
                         <DeleteIcon color='warning'/>
                     </IconButton>
                 </Box>
