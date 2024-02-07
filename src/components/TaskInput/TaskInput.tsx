@@ -20,6 +20,9 @@ function NewTaskInput() {
                 sx = {{
                   '& .MuiInputLabel-root': {
                     pl: 0.2,
+                    
+                  },
+                  '& .Mui-focused': {
                     color: "#00000099"
                   }
                 }}
