@@ -4,14 +4,15 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const isEdit = false;
 
-function TaskPlan_newTask() {
+function TaskPlan_newTask({ task }) {
+
     return (
         <Stack direction='row' justifyContent={'space-between'} alignItems='center'>
             <Box display='flex' alignItems='center'>
                 {
-                    isEdit ? <TextField variant="standard" label='Имя задачи'/> 
+                    isEdit ? <TextField defaultValue={task.taskName} variant="standard" label='Имя задачи'/> 
                     : 
-                    <FormControlLabel control={<Checkbox/>} label='Task'/>
+                    <FormControlLabel control={<Checkbox/>} label={task.taskName}/>
                 }
             </Box>
             <Box alignItems='center'>

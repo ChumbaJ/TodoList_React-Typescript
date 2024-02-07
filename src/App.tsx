@@ -3,19 +3,31 @@ import { Container, Typography } from '@mui/material'
 import NewTaskInput from './components/TaskInput/TaskInput'
 import TaskPlan from './components/TaskPlanComponent/TaskPlan'
 import TaskDone from './components/TaskDone/TaskDone'
+import { useState } from 'react'
+
+interface Itask {
+  taskName: string
+  isEdit: boolean
+  isDone: boolean
+}
+
+type TaskListType = Array<Itask> | [];
+
 
 function App() {
-  const taskList = [
-    {
-      taskName: '',
-      isEdit: false,
-      isDone: false
-    }
-  ]
+  const [taskList, setTaskList] = useState<TaskListType>([]);
 
-  const addNewTask = (e, task) => { 
+  const addNewTask = (e, task: string) => { 
     e.preventDefault();
-    console.log("added -", task);
+    setTaskList([
+      ...taskList,
+      {
+        taskName: task,
+        isEdit: false,
+        isDone: false
+      }
+    ])
+
   }
 
   return (
@@ -30,7 +42,7 @@ function App() {
 
       <NewTaskInput addNewTask = {addNewTask}></NewTaskInput>
 
-      <TaskPlan/>
+      <TaskPlan taskList = {taskList}/>
       <TaskDone/>
     </Container>
   )

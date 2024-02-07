@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 
 function NewTaskInput({ addNewTask }) {
-  const [task, setTask] = useState("");
+  const [taskName, setTask] = useState("");
 
   const onInput = (e) => {
     const taskText = e.target.value;
@@ -23,9 +23,9 @@ function NewTaskInput({ addNewTask }) {
       }}>
 
         
-        <form onSubmit={(e) => addNewTask(e, task)} action="submit" id='task-form'>
+        <form onSubmit={(e) => addNewTask(e, taskName)} action="submit" id='task-form'>
           <TextField
-            value={task}
+            value={taskName}
             onChange={(e) => onInput(e)}
             label = {"Имя новой задачи"} 
             autoFocus = {true} 
@@ -42,12 +42,12 @@ function NewTaskInput({ addNewTask }) {
             }}
           ></TextField>
 
-            <IconButton disabled={ !(Boolean(task)) } type='submit' sx={{
+            <IconButton disabled={ !(Boolean(taskName)) } type='submit' sx={{
               position: "absolute",
               right: 0,
               bottom: 0
             }}>
-              <AddRoundedIcon color={ Boolean(task) ? 'info' : 'disabled' }></AddRoundedIcon>
+              <AddRoundedIcon color={ Boolean(taskName) ? 'info' : 'disabled' }></AddRoundedIcon>
             </IconButton>
         </form>       
       </Box>

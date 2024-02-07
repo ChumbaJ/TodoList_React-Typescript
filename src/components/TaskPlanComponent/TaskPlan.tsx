@@ -1,17 +1,22 @@
 import { Stack, Typography } from "@mui/material"
 import TaskPlan_newTask from "./TaskPlan_newTask/TaskPlan_newTask"
 
-function TaskPlan() {
+function TaskPlan({ taskList }) {
+
     return (
-        <Stack mb={4} spacing = {2}>
+        <Stack mb={4} spacing = {0.5}>
             <Typography
             component = {'p'}
             variant = 'caption'
             gutterBottom = {false}
             align = {'center'}
             color='text.secondary'
-            >{'ПЛАН (0)'}</Typography>
-            <TaskPlan_newTask/>
+            >{`ПЛАН (${taskList.length})`}</Typography>
+
+            {taskList.map(task => 
+                <TaskPlan_newTask key={crypto.randomUUID()} task = {task}/>
+            )}
+
         </Stack>
     )
 }
