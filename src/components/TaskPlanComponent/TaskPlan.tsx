@@ -5,34 +5,40 @@ import TaskPlan_newTask from "./TaskPlan_newTask/TaskPlan_newTask"
 
 function TaskPlan({ taskList, onSubmitEdit, onDeleteTask, onCheckboxChanged}) {
     const plannedTasks = taskList.filter(task => task.isDone === false).length;
-    
-    return (
-        <Stack mb={4} spacing = {1}>
-            <Typography
-            component = {'p'}
-            variant = 'caption'
-            gutterBottom = {false}
-            align = {'center'}
-            color='text.secondary'
-            >{`ПЛАН (${plannedTasks})`}</Typography>
 
-            {taskList.map(task => {
-                if (task.isDone) {
-                    
-                } else {
-                    return (
-                        <TaskPlan_newTask 
-                        key={crypto.randomUUID()} 
-                        task = {task} 
-                        onSubmitEdit = {onSubmitEdit}
-                        onDeleteTask = {onDeleteTask}
-                        onCheckboxChanged = {onCheckboxChanged}
-                        />)
+
+    if (plannedTasks > 0) {
+        return (
+            <Stack mb={4} spacing = {1}>
+                <Typography
+                component = {'p'}
+                variant = 'caption'
+                gutterBottom = {false}
+                align = {'center'}
+                color='text.secondary'
+                >{`ПЛАН (${plannedTasks})`}</Typography>
+    
+                {taskList.map(task => {
+                    if (task.isDone) {
+                        
+                    } else {
+                        return (
+                            <TaskPlan_newTask 
+                            key={crypto.randomUUID()} 
+                            task = {task} 
+                            onSubmitEdit = {onSubmitEdit}
+                            onDeleteTask = {onDeleteTask}
+                            onCheckboxChanged = {onCheckboxChanged}
+                            />)
+                    }
                 }
-            }
-            )}
-        </Stack>
-    )
+                )}
+            </Stack>
+        )
+    } else {
+        return <></>
+    }
+    
 }
 
 export default TaskPlan
