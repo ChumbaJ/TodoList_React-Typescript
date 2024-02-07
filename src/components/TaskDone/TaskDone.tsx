@@ -19,7 +19,7 @@ function TaskDone({ taskList }) {
                     <Box display='flex' alignItems='center'>
                         <FormControlLabel control={<Checkbox defaultChecked={true}/>} label={task.taskName}/>
                     </Box>
-                    <IconButton>
+                    <IconButton sx={{pr:0.4}}>
                         <DeleteIcon color="warning"/>
                     </IconButton>
                 </Stack>
