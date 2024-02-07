@@ -3,7 +3,9 @@ import { Container, Typography } from '@mui/material'
 import NewTaskInput from './components/TaskInput/TaskInput'
 import TaskPlan from './components/TaskPlanComponent/TaskPlan'
 import TaskDone from './components/TaskDone/TaskDone'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
+
+
 
 interface Itask {
   taskName: string
@@ -16,9 +18,10 @@ type TaskListType = Array<Itask> | [];
 
 
 function App() {
+
   const [taskList, setTaskList] = useState<TaskListType>([]);
 
-  const addNewTask = (e, task: string) => { 
+  const addNewTask = (e: FormEvent, task: string) => { 
     e.preventDefault();
 
     setTaskList([
@@ -35,18 +38,18 @@ function App() {
 
   }
 
-  const submitEditTask = (e, taskToEdit: Itask) => {
+  const submitEditTask = (e: FormEvent, taskToEdit: Itask) => {
     e.preventDefault();
     taskToEdit.isEdit = !taskToEdit.isEdit; 
     setTaskList([...taskList])
   }
 
-  const onDeleteTask = (task) => {
+  const onDeleteTask = (task: Itask) => {
     task.toDelete = true;
     setTaskList(taskList.filter(taskObj => taskObj.toDelete != true));
   }
 
-  const onCheckboxChanged = (task) => {
+  const onCheckboxChanged = (task: Itask) => {
     task.isDone = !task.isDone;  
     setTaskList([...taskList])
   }
@@ -63,12 +66,16 @@ function App() {
 
       <NewTaskInput addNewTask = {addNewTask}></NewTaskInput>
       <TaskPlan 
-      taskList = {taskList} 
-      onDeleteTask = {onDeleteTask} 
-      onSubmitEdit = {submitEditTask}
-      onCheckboxChanged = {onCheckboxChanged}
+        taskList = {taskList} 
+        onDeleteTask = {onDeleteTask} 
+        onSubmitEdit = {submitEditTask}
+        onCheckboxChanged = {onCheckboxChanged}
       />
-      <TaskDone onDeleteTask = {onDeleteTask} taskList = {taskList} onCheckboxChanged = {onCheckboxChanged}/>
+      <TaskDone 
+        onDeleteTask = {onDeleteTask} 
+        taskList = {taskList} 
+        onCheckboxChanged = {onCheckboxChanged}
+      />
     </Container>
   )
 }

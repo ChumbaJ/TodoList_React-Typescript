@@ -1,9 +1,29 @@
 import { Stack, Typography } from "@mui/material"
 import TaskPlan_newTask from "./TaskPlan_newTask/TaskPlan_newTask"
+import { FormEvent } from "react"
+
+interface Itask {
+    taskName: string
+    isEdit: boolean
+    isDone: boolean
+    toDelete: boolean
+}
+  
+type TaskListType = Array<Itask> | [];
+
+type checkBoxChangedFuncType = (task: Itask) => void;
+type deleteTaskFuncType = (task: Itask) => void;
+type onSubmitEditType = (e: FormEvent, taskToEdit: Itask) => void;
+
+interface ITaskPlanProps {
+    taskList: TaskListType;
+    onSubmitEdit: onSubmitEditType;
+    onDeleteTask: deleteTaskFuncType;
+    onCheckboxChanged: checkBoxChangedFuncType;
+}
 
 
-
-function TaskPlan({ taskList, onSubmitEdit, onDeleteTask, onCheckboxChanged}) {
+function TaskPlan({ taskList, onSubmitEdit, onDeleteTask, onCheckboxChanged}: ITaskPlanProps) {
     const plannedTasks = taskList.filter(task => task.isDone === false).length;
 
 
@@ -20,7 +40,7 @@ function TaskPlan({ taskList, onSubmitEdit, onDeleteTask, onCheckboxChanged}) {
     
                 {taskList.map(task => {
                     if (task.isDone) {
-                        
+                        // EMPTY
                     } else {
                         return (
                             <TaskPlan_newTask 

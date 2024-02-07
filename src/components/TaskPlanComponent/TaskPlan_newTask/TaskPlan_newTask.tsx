@@ -3,11 +3,31 @@ import { Box, Checkbox, FormControlLabel, IconButton, Stack, TextField } from "@
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import './TaskPlan_newTask.css'
 
-function TaskPlan_newTask({ task, onSubmitEdit, onDeleteTask, onCheckboxChanged }) {
+
+interface Itask {
+    taskName: string
+    isEdit: boolean
+    isDone: boolean
+    toDelete: boolean
+}
+
+type checkBoxChangedFuncType = (task: Itask) => void;
+type deleteTaskFuncType = (task: Itask) => void;
+type onSubmitEditType = (e: FormEvent, taskToEdit: Itask) => void;
+
+
+interface ITaskPlan_newTaskProps {
+    task: Itask;
+    onSubmitEdit: onSubmitEditType;
+    onDeleteTask: deleteTaskFuncType;
+    onCheckboxChanged: checkBoxChangedFuncType;
+} 
+
+function TaskPlan_newTask({ task, onSubmitEdit, onDeleteTask, onCheckboxChanged }: ITaskPlan_newTaskProps) {
     const [newTaskName, setNewTaskName] = useState(task.taskName);
 
     if (task.isEdit) {

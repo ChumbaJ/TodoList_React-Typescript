@@ -2,8 +2,28 @@ import { Box, Checkbox, IconButton, Stack, FormControlLabel, Typography } from "
 import DeleteIcon from '@mui/icons-material/Delete';
 import './TaskDone.css'
 
+interface Itask {
+    taskName: string
+    isEdit: boolean
+    isDone: boolean
+    toDelete: boolean
+}
+  
+type TaskListType = Array<Itask> | [];
 
-function TaskDone({ taskList, onCheckboxChanged, onDeleteTask }) {
+type checkBoxChangedFuncType = (task: Itask) => void;
+type deleteTaskFuncType = (task: Itask) => void;
+
+interface ITaskDoneProps {
+    taskList: TaskListType;
+    onCheckboxChanged: checkBoxChangedFuncType;
+    onDeleteTask: deleteTaskFuncType;
+}
+
+
+
+
+function TaskDone({ taskList, onCheckboxChanged, onDeleteTask } : ITaskDoneProps) {
     const doneTasks = taskList.filter(task => task.isDone)
 
     if (doneTasks.length > 0) {
