@@ -19,6 +19,11 @@ function App() {
 
   const addNewTask = (e, task: string) => { 
     e.preventDefault();
+    
+    for (const taskItem of taskList) {
+      if (taskItem.taskName === task) return;
+    }
+
     setTaskList([
       ...taskList,
       {
