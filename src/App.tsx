@@ -71,7 +71,7 @@ function App() {
   }
 
   return (
-    <Container disableGutters={true} sx={{mt: 4, mb:4 , minHeight: 600, p:8, borderRadius: 4, boxShadow: 2}} maxWidth = 'sm'>
+    <Container disableGutters={true} sx={{mt: 4, mb:4 , minHeight: 600, p:8, borderRadius: 4, boxShadow: 4}} maxWidth = 'sm'>
       <Typography 
         fontSize = {34}
         fontWeight = {400} 
