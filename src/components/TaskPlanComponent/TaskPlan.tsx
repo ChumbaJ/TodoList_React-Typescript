@@ -3,7 +3,7 @@ import TaskPlan_newTask from "./TaskPlan_newTask/TaskPlan_newTask"
 
 
 
-function TaskPlan({ taskList }) {
+function TaskPlan({ taskList, onSubmitEdit }) {
 
     return (
         <Stack mb={4} spacing = {0.5}>
@@ -16,7 +16,11 @@ function TaskPlan({ taskList }) {
             >{`ПЛАН (${taskList.length})`}</Typography>
 
             {taskList.map(task => 
-                <TaskPlan_newTask key={crypto.randomUUID()} task = {task}/>
+                <TaskPlan_newTask 
+                key={crypto.randomUUID()} 
+                task = {task} 
+                onSubmitEdit = {onSubmitEdit}
+                />
             )}
 
         </Stack>

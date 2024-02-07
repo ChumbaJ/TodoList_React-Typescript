@@ -1,30 +1,68 @@
+/* eslint-disable no-extra-boolean-cast */
 import { Box, Checkbox, FormControlLabel, IconButton, Stack, TextField } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DoneIcon from '@mui/icons-material/Done';
+import { useState } from "react";
 
-const isEdit = false;
+function TaskPlan_newTask({ task, onSubmitEdit }) {
+    const [newTaskName, setNewTaskName] = useState(task.taskName);
 
-function TaskPlan_newTask({ task }) {
+    if (task.isEdit) {
+        return (
+            <Box sx={{position: 'relative'}}>
+                <form action="submit" onSubmit={(e) => {
+                    task.taskName = newTaskName;
+                    onSubmitEdit(e, task)
+                    }}>
+                    <TextField 
+                        value={newTaskName}
+                        onChange={e => setNewTaskName(e.target.value)}
+                        variant="standard"
+                        label='Имя новой задачи'
+                        fullWidth={true}
+                        sx={{
+                            '& .MuiInputLabel-root.Mui-focused': {
+                                color: "text.secondary"
+                            }
+                        }}
+                    />
 
-    return (
-        <Stack direction='row' justifyContent={'space-between'} alignItems='center'>
-            <Box display='flex' alignItems='center'>
-                {
-                    isEdit ? <TextField defaultValue={task.taskName} variant="standard" label='Имя задачи'/> 
-                    : 
+                    <IconButton
+                        disabled={ !Boolean(newTaskName) }
+                        type="submit"
+                        sx={{
+                            position: 'absolute',
+                            right: 0,
+                            bottom: 0
+                        }}
+                    >
+                        <DoneIcon color={newTaskName ? "info" : "disabled"}/>
+                    </IconButton>
+                </form>
+            </Box>
+
+        )
+    } else {
+        return (
+            <Stack direction='row' justifyContent={'space-between'} alignItems='center'>
+                <Box display='flex' alignItems='center'>
                     <FormControlLabel control={<Checkbox/>} label={task.taskName}/>
-                }
-            </Box>
-            <Box alignItems='center'>
-                <IconButton sx={{p:0, mr:0.5, ml:2}}>
-                    <EditIcon color='info'/>
-                </IconButton>
-                <IconButton>
-                    <DeleteIcon color='warning'/>
-                </IconButton>
-            </Box>
-        </Stack>
-    )
+                </Box>
+                <Box alignItems='center'>
+                    <IconButton onClick={(e) => onSubmitEdit(e, task)}
+                        sx={{p:0, mr:0.5, ml:2}}>
+
+                        <EditIcon color='info'/>
+                    </IconButton>
+                    <IconButton>
+                        <DeleteIcon color='warning'/>
+                    </IconButton>
+                </Box>
+            </Stack>
+        )
+    }
+
 }
 
 export default TaskPlan_newTask

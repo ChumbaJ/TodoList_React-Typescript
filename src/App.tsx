@@ -19,10 +19,6 @@ function App() {
 
   const addNewTask = (e, task: string) => { 
     e.preventDefault();
-    
-    for (const taskItem of taskList) {
-      if (taskItem.taskName === task) return;
-    }
 
     setTaskList([
       ...taskList,
@@ -35,8 +31,17 @@ function App() {
 
   }
 
+  const submitEditTask = (e, taskToEdit) => {
+    e.preventDefault();
+
+
+    taskToEdit.isEdit = !taskToEdit.isEdit; 
+    setTaskList([...taskList])
+  }
+
+
   return (
-    <Container disableGutters={true} sx={{mt: 4, minHeight: 600, p:8, borderRadius: 4, boxShadow: 2}} maxWidth = 'sm'>
+    <Container disableGutters={true} sx={{mt: 4, mb:4 , minHeight: 600, p:8, borderRadius: 4, boxShadow: 2}} maxWidth = 'sm'>
       <Typography 
         fontSize = {34}
         fontWeight = {400} 
@@ -47,7 +52,7 @@ function App() {
 
       <NewTaskInput addNewTask = {addNewTask}></NewTaskInput>
 
-      <TaskPlan taskList = {taskList}/>
+      <TaskPlan taskList = {taskList} onSubmitEdit = {submitEditTask}/>
       <TaskDone/>
     </Container>
   )
