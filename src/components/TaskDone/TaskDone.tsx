@@ -1,4 +1,4 @@
-import { Box, Checkbox, IconButton, Stack, Typography } from "@mui/material"
+import { Box, Checkbox, IconButton, Stack, FormControlLabel, Typography } from "@mui/material"
 import DeleteIcon from '@mui/icons-material/Delete';
 
 function TaskDone() {
@@ -8,8 +8,7 @@ function TaskDone() {
 
             <Stack direction='row' justifyContent='space-between'>
                 <Box display='flex' alignItems='center'>
-                    <Checkbox sx={{pl:0}}/>
-                    <Typography>Done Task</Typography>
+                    <FormControlLabel control={<Checkbox/>} label='Task'/>
                 </Box>
                 <IconButton>
                     <DeleteIcon color="warning"/>

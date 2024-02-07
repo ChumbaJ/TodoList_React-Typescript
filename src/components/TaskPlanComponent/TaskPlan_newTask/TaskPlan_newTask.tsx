@@ -1,4 +1,4 @@
-import { Box, Checkbox, IconButton, Stack, TextField, Typography } from "@mui/material"
+import { Box, Checkbox, FormControlLabel, IconButton, Stack, TextField } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
@@ -8,9 +8,10 @@ function TaskPlan_newTask() {
     return (
         <Stack direction='row' justifyContent={'space-between'} alignItems='center'>
             <Box display='flex' alignItems='center'>
-                <Checkbox sx={{pl:0}}/>
                 {
-                    isEdit ? <TextField variant="standard" label='Имя задачи'/> : <Typography>Task</Typography>
+                    isEdit ? <TextField variant="standard" label='Имя задачи'/> 
+                    : 
+                    <FormControlLabel control={<Checkbox/>} label='Task'/>
                 }
             </Box>
             <Box alignItems='center'>
