@@ -3,7 +3,7 @@ import TaskPlan_newTask from "./TaskPlan_newTask/TaskPlan_newTask"
 
 
 
-function TaskPlan({ taskList, onSubmitEdit }) {
+function TaskPlan({ taskList, onSubmitEdit, onDeleteTask }) {
 
     return (
         <Stack mb={4} spacing = {1}>
@@ -20,6 +20,7 @@ function TaskPlan({ taskList, onSubmitEdit }) {
                 key={crypto.randomUUID()} 
                 task = {task} 
                 onSubmitEdit = {onSubmitEdit}
+                onDeleteTask = {onDeleteTask}
                 />
             )}
         </Stack>

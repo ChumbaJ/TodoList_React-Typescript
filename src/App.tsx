@@ -9,6 +9,7 @@ interface Itask {
   taskName: string
   isEdit: boolean
   isDone: boolean
+  toDelete: boolean
 }
 
 type TaskListType = Array<Itask> | [];
@@ -25,11 +26,12 @@ function App() {
       {
         taskName: task,
         isEdit: false,
-        isDone: false
+        isDone: false,
+        toDelete: false
       }
     ])
 
-    
+
 
   }
 
@@ -39,6 +41,10 @@ function App() {
     setTaskList([...taskList])
   }
 
+  const onDeleteTask = (task) => {
+    task.toDelete = true;
+    setTaskList(taskList.filter(taskObj => taskObj.toDelete != true));
+  }
 
   return (
     <Container disableGutters={true} sx={{mt: 4, mb:4 , minHeight: 600, p:8, borderRadius: 4, boxShadow: 2}} maxWidth = 'sm'>
@@ -51,7 +57,7 @@ function App() {
       >TODO</Typography>
 
       <NewTaskInput addNewTask = {addNewTask}></NewTaskInput>
-      <TaskPlan taskList = {taskList} onSubmitEdit = {submitEditTask}/>
+      <TaskPlan taskList = {taskList} onDeleteTask = {onDeleteTask} onSubmitEdit = {submitEditTask}/>
       <TaskDone/>
     </Container>
   )

@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import { useState } from "react";
 
-function TaskPlan_newTask({ task, onSubmitEdit }) {
+function TaskPlan_newTask({ task, onSubmitEdit, onDeleteTask }) {
     const [newTaskName, setNewTaskName] = useState(task.taskName);
 
     if (task.isEdit) {
@@ -58,6 +58,7 @@ function TaskPlan_newTask({ task, onSubmitEdit }) {
                     </IconButton>
 
                     <IconButton
+                        onClick={() => onDeleteTask(task)}
                         sx={{p:0.4}}
                     >
                         <DeleteIcon color='warning'/>
